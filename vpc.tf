@@ -42,17 +42,34 @@ resource "aws_subnet" "main_public_3" {
   
 }
 
-
-
-
 #private subnet
 
 resource "aws_subnet" "main_private_1" {
     vpc_id = "${aws_vpc.main.id}"
     cidr_block = "10.0.4.0/24"
-    map_public_ip_on_launch = "true"
+    map_public_ip_on_launch = "false"
     availability_zone = "us-east-1a"
     tags={
-        name="main_private_1"
+        name="main-private-1"
+    }
+}
+
+resource "aws_subnet" "main_private_2" {
+    vpc_id ="${aws_vpc.main.id}"
+    cidr_block = "10.0.5.0/24"
+    map_public_ip_on_launch = "false"
+    availability_zone = "us-east-1b"
+    tags = {
+        name = "main-private-2"
+    }
+  
+}
+resource "aws_subnet" "main_private_3" {
+    vpc_id = "${aws_vpc.main.id}"
+    cidr_block = "10.0.6.0/24"
+    map_public_ip_on_launch = "false"
+    availability_zone= "us-east-1c"
+    tags={
+        name="main-private-3"
     }
 }
